@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   Luxury Jewelry Design System
+   - Inspired by silk textures and premium aesthetics
+   - Google production standards: modular, scalable, accessible
+   ========================================= */
+
+/* ---------- BASE LAYER ---------- */
+@layer base {
+  :root {
+    /* ======= Color Palette ======= */
+    --background: 35 20% 97%;
+    --foreground: 25 15% 15%;
+    --card: 30 25% 98%;
+    --card-foreground: 25 15% 15%;
+    --popover: 30 25% 98%;
+    --popover-foreground: 25 15% 15%;
+
+    /* Primary & Secondary */
+    --primary: 25 30% 20%;
+    --primary-foreground: 30 25% 98%;
+    --secondary: 35 25% 92%;
+    --secondary-foreground: 25 30% 20%;
+
+    /* Muted & Accent */
+    --muted: 40 15% 94%;
+    --muted-foreground: 25 20% 45%;
+    --accent: 45 70% 75%;
+    --accent-foreground: 25 30% 20%;
+
+    /* Gold Variants */
+    --gold: 45 85% 65%;
+    --gold-light: 48 60% 85%;
+    --gold-dark: 40 75% 55%;
+
+    /* Special Surfaces */
+    --silk: 35 15% 96%;
+    --silk-dark: 30 20% 92%;
+
+    /* Functional Colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 40 20% 88%;
+    --input: 40 20% 90%;
+    --ring: 45 70% 75%;
+
+    /* Shape */
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(45, 85%, 65%),
+      hsl(40, 75%, 55%)
+    );
+    --gradient-silk: linear-gradient(
+      180deg,
+      hsl(35, 20%, 97%),
+      hsl(30, 25%, 94%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(35, 20%, 97%) 0%,
+      hsl(30, 25%, 94%) 100%
+    );
+
+    /* Shadows */
+    --shadow-soft: 0 2px 20px -5px hsl(25 30% 20% / 0.1);
+    --shadow-elegant: 0 8px 40px -12px hsl(25 30% 20% / 0.15);
+    --shadow-gold: 0 4px 20px -8px hsl(45 70% 75% / 0.3);
+
+    /* Motion */
+    --transition-elegant: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+
+    /* Sidebar Theme */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark Mode */
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
+  .luxury-text {
+    @apply font-serif tracking-wide;
+  }
+
+  .elegant-transition {
+    transition: var(--transition-elegant);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+}
+
+/* ---------- COMPONENTS LAYER ---------- */
+@layer components {
+  .btn-gold {
+    @apply bg-gradient-to-r from-gold to-gold-dark text-primary-foreground px-8 py-3 rounded-lg;
+    @apply shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-elegant)];
+    @apply elegant-transition hover:scale-[1.02];
+  }
+
+  .btn-outline-gold {
+    @apply border-2 border-accent text-accent-foreground px-8 py-3 rounded-lg;
+    @apply hover:bg-accent hover:text-accent-foreground;
+    @apply elegant-transition;
+  }
+
+  .divider-gold {
+    @apply h-px bg-gradient-to-r from-transparent via-accent to-transparent;
+  }
+
+  .silk-bg {
+    @apply bg-gradient-to-br from-silk to-silk-dark;
+  }
+
+  .luxury-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl;
+    @apply shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-elegant)];
+    @apply elegant-transition;
+  }
+
+  .fade-in-up {
+    @apply animate-[fadeInUp_0.6s_ease-out_forwards];
+    opacity: 0;
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    @apply animate-[fadeIn_0.8s_ease-out_forwards];
+    opacity: 0;
+    animation-fill-mode: both;
+  }
+
+  .scale-in {
+    @apply animate-[scaleIn_0.4s_ease-out_forwards];
+    opacity: 0;
+    animation-fill-mode: both;
+  }
+
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .parallax {
+    transform: translateY(var(--parallax-offset, 0));
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Staggered Animation Delay */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+  .stagger-6 {
+    animation-delay: 0.6s;
+  }
+}
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
