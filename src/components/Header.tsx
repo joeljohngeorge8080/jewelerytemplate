@@ -7,6 +7,7 @@
 import React, { useState, useEffect, memo } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { brand } from "@/data/siteContent";
 
 /**
  * Navigation link type
@@ -23,9 +24,9 @@ const Header: React.FC = memo(() => {
 
   const navLinks: NavLink[] = [
     { label: "Home", href: "/" },
-    { label: "About", href: "#" },
-    { label: "Collection", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "About", href: "/about" },
+    { label: "Collection", href: "/collection" },
+    { label: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const Header: React.FC = memo(() => {
             className="font-serif text-2xl font-bold text-primary"
             aria-label="Go to home page"
           >
-            JewelReact
+            {brand.name}
           </Link>
 
           {/* Desktop Navigation */}

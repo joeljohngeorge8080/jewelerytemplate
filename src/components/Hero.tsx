@@ -1,40 +1,34 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-// Assets
-import heroRing from "@/assets/hero-ring.webp";
-import pearlNecklace from "@/assets/pearl-necklace.webp";
-import emeraldBracelet from "@/assets/emerald-bracelet.webp";
-import sapphireEarrings from "@/assets/sapphire-earrings.webp";
-import rubyPendant from "@/assets/ruby-pendant.webp";
+import { getProductsByCategory } from "@/data/products";
+import { CATEGORY_LABELS, type ProductCategory } from "@/types/product";
 
 const Hero: React.FC = memo(() => {
   const titleRef = useScrollAnimation();
   const productRef = useScrollAnimation();
   const categoriesRef = useScrollAnimation();
 
-  const categories = [
-    { name: "BRACELETS", image: emeraldBracelet },
-    { name: "EARRINGS", image: sapphireEarrings },
-    { name: "PENDANTS", image: rubyPendant },
-    { name: "RINGS", image: heroRing },
+  const categoryOrder: ProductCategory[] = [
+    "bracelets",
+    "earrings",
+    "pendants",
+    "rings",
   ];
 
-  const featuredProducts = [
-    {
-      name: "Diamond Earrings",
-      subtitle: "18K Gold",
-      image: sapphireEarrings,
-      aspect: "aspect-square",
-    },
-    {
-      name: "Pearl Necklace",
-      subtitle: "Premium Pearls",
-      image: pearlNecklace,
-      aspect: "aspect-[3/4]",
-    },
-  ];
+  const categories = categoryOrder.map((category) => ({
+    category,
+    name: CATEGORY_LABELS[category].toUpperCase(),
+    image: getProductsByCategory(category)[0]?.images[0],
+  }));
+
+  const featuredProducts = getProductsByCategory().slice(0, 2).map((product, idx) => ({
+    id: product.id,
+    name: product.name,
+    subtitle: product.shortDescription,
+    image: product.images[0],
+    aspect: idx === 0 ? "aspect-square" : "aspect-[3/4]",
+  }));
 
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-background to-silk overflow-hidden">
@@ -71,8 +65,9 @@ const Hero: React.FC = memo(() => {
           <div ref={productRef} className="scroll-animate stagger-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {featuredProducts.map((product, idx) => (
-                <div
-                  key={product.name}
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
                   className={idx === 1 ? "sm:mt-8 lg:mt-12" : ""}
                 >
                   <div className="luxury-card p-4 sm:p-6 group cursor-pointer elegant-transition hover:scale-105">
@@ -94,7 +89,7 @@ const Hero: React.FC = memo(() => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -109,7 +104,7 @@ const Hero: React.FC = memo(() => {
             {categories.map((cat, idx) => (
               <Link
                 key={cat.name}
-                to="#"
+                to={`/collection?category=${cat.category}`}
                 className={`group elegant-transition stagger-${idx + 1}`}
               >
                 <div className="luxury-card p-3 sm:p-4 text-center hover:scale-105 elegant-transition">

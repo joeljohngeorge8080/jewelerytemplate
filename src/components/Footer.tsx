@@ -5,6 +5,7 @@
  */
 
 import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import {
   Mail,
   Phone,
@@ -13,6 +14,7 @@ import {
   Facebook,
   Twitter,
 } from "lucide-react";
+import { brand, contactInfo, socialLinks } from "@/data/siteContent";
 
 /**
  * Navigation link type definition
@@ -43,10 +45,9 @@ const Footer: React.FC = memo(() => {
   const currentYear: number = new Date().getFullYear();
 
   const quickLinks: NavLink[] = [
-    { label: "About Us", href: "#" },
-    { label: "Collection", href: "#" },
-    { label: "Our Team", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "About Us", href: "/about" },
+    { label: "Collection", href: "/collection" },
+    { label: "Contact", href: "/contact" },
   ];
 
   const services: Service[] = [
@@ -57,10 +58,10 @@ const Footer: React.FC = memo(() => {
     { label: "Corporate Gifts", href: "#" },
   ];
 
-  const socialLinks: SocialLink[] = [
-    { label: "Instagram", href: "#", icon: Instagram },
-    { label: "Facebook", href: "#", icon: Facebook },
-    { label: "Twitter", href: "#", icon: Twitter },
+  const socials: SocialLink[] = [
+    { label: "Instagram", href: socialLinks.instagram, icon: Instagram },
+    { label: "Facebook", href: socialLinks.facebook, icon: Facebook },
+    { label: "Twitter", href: socialLinks.twitter, icon: Twitter },
   ];
 
   return (
@@ -76,15 +77,14 @@ const Footer: React.FC = memo(() => {
               id="footer-heading"
               className="font-serif text-2xl font-bold mb-6"
             >
-              JewelReact
+              {brand.name}
             </h3>
             <p className="text-primary-foreground/80 leading-relaxed mb-6">
-              Crafting timeless elegance through three generations of master
-              jewelers, where tradition meets contemporary artistry.
+              {brand.tagline}
             </p>
             <nav aria-label="Social Media">
               <ul className="flex space-x-4">
-                {socialLinks.map(({ label, href, icon: Icon }) => (
+                {socials.map(({ label, href, icon: Icon }) => (
                   <li key={label}>
                     <a
                       href={href}
@@ -105,12 +105,12 @@ const Footer: React.FC = memo(() => {
             <ul className="space-y-3">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <a
-                    href={href}
+                  <Link
+                    to={href}
                     className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -156,8 +156,9 @@ const Footer: React.FC = memo(() => {
                   aria-hidden="true"
                 />
                 <div className="text-primary-foreground/80">
-                  <p>15 Place Vendôme</p>
-                  <p>75001 Paris, France</p>
+                  {contactInfo.addressLines.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
                 </div>
               </li>
               <li className="flex items-center space-x-3">
@@ -166,10 +167,10 @@ const Footer: React.FC = memo(() => {
                   aria-hidden="true"
                 />
                 <a
-                  href="tel:+33142609523"
+                  href={`tel:${contactInfo.phone}`}
                   className="text-primary-foreground/80"
                 >
-                  +33 1 42 60 95 23
+                  {contactInfo.phone}
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -178,10 +179,10 @@ const Footer: React.FC = memo(() => {
                   aria-hidden="true"
                 />
                 <a
-                  href="mailto:contact@lumiere-atelier.com"
+                  href={`mailto:${contactInfo.email}`}
                   className="text-primary-foreground/80"
                 >
-                  contact@lumiere-atelier.com
+                  {contactInfo.email}
                 </a>
               </li>
             </ul>
@@ -192,7 +193,7 @@ const Footer: React.FC = memo(() => {
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © {currentYear} JewelReact. All rights reserved.
+              © {currentYear} {brand.name}. All rights reserved.
             </p>
             <nav aria-label="Legal">
               <ul className="flex space-x-6 text-sm">

@@ -2,10 +2,7 @@ import React, { useState, useCallback, KeyboardEvent, memo } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Play } from "lucide-react";
-
-// Assets (lazy loaded where possible for performance)
-import pearlNecklace from "@/assets/pearl-necklace.webp";
-import rubyPendant from "@/assets/ruby-pendant.webp";
+import { aboutContent } from "@/data/siteContent";
 
 /**
  * About Section Component
@@ -44,29 +41,29 @@ const About: React.FC = () => {
             {/* Text Content */}
             <div ref={titleRef} className="scroll-animate">
               <p className="about-section__subtitle text-accent text-sm font-medium tracking-widest uppercase mb-4">
-                OUR STORY
+                {aboutContent.subtitle}
               </p>
               <h2 className="about-section__title font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
-                TRADITION
-                <br />
-                CARED FOR
-                <br />
-                SINCE <span className="text-primary">1998</span>
+                {aboutContent.titleLines.map((line, idx) => (
+                  <React.Fragment key={line}>
+                    {idx === aboutContent.titleLines.length - 1 ? (
+                      <span className="text-primary">{line}</span>
+                    ) : (
+                      line
+                    )}
+                    {idx < aboutContent.titleLines.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
               </h2>
 
               <div
                 ref={contentRef}
                 className="scroll-animate stagger-2 space-y-6 text-lg text-muted-foreground leading-relaxed mb-8"
               >
-                <p>
-                  Nam porttitor et felis ut dictum. Donec sapien ante, ultrices
-                  nec urna ut, tempor tempus erat. Curabitur pharetra non libero
-                  nec auctor.
-                </p>
-                <p>Sed quis molestie mauris.</p>
+                <p>{aboutContent.storyParagraphs[0]}</p>
               </div>
               <Link
-                to="#"
+                to="/about"
                 className="btn-gold text-base sm:text-lg font-medium w-full sm:w-auto"
               >
                 READ MORE
@@ -88,7 +85,7 @@ const About: React.FC = () => {
                   {!isPlaying ? (
                     <>
                       <img
-                        src={pearlNecklace}
+                        src={aboutContent.heroImage}
                         alt="Heritage video thumbnail showing a pearl necklace"
                         className="w-full h-full object-cover"
                         loading="lazy"
@@ -107,7 +104,7 @@ const About: React.FC = () => {
                   ) : (
                     <>
                       <img
-                        src={pearlNecklace}
+                        src={aboutContent.heroImage}
                         alt="Heritage video thumbnail showing a pearl necklace"
                         className="w-full h-full object-cover"
                         loading="lazy"
@@ -139,7 +136,7 @@ const About: React.FC = () => {
                 {/* Overlay Image */}
                 <div className="about-section__overlay-image absolute -top-4 right-24 w-24 h-24 md:w-40 md:h-40 rounded-lg overflow-hidden shadow-xl">
                   <img
-                    src={rubyPendant}
+                    src={aboutContent.overlayImage}
                     alt="Ruby pendant representing heritage craftsmanship"
                     className="w-full h-full object-cover"
                     loading="lazy"

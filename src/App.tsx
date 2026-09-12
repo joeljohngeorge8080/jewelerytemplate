@@ -7,6 +7,10 @@ import Footer from "@/components/Footer";
 
 // Lazily load pages to improve performance
 const Home = lazy(() => import("./pages/Home"));
+const Collection = lazy(() => import("./pages/Collection"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const AboutPage = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 /** React Query client with recommended defaults */
 const queryClient = new QueryClient({
@@ -35,6 +39,10 @@ const App = () => (
         <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>
         <Footer />
