@@ -4,10 +4,10 @@
  * Reads/writes the "category" query param so filtered links (e.g. from Hero)
  * land directly on the right tab.
  */
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { getProductsByCategory } from "@/data/products";
-import { CATEGORY_LABELS, type ProductCategory } from "@/types/product";
+import { dataService } from "@/services/dataService";
+import { CATEGORY_LABELS, type Product, type ProductCategory } from "@/types/product";
 
 const CATEGORIES: (ProductCategory | "all")[] = [
   "all",
@@ -20,7 +20,15 @@ const CATEGORIES: (ProductCategory | "all")[] = [
 const Collection: React.FC = memo(() => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = (searchParams.get("category") as ProductCategory | "all") || "all";
-  const products = getProductsByCategory(activeCategory);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    dataService.getProducts(activeCategory).then((data) => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, [activeCategory]);
 
   const setCategory = (category: ProductCategory | "all") => {
     if (category === "all") {
@@ -61,7 +69,9 @@ const Collection: React.FC = memo(() => {
         </div>
 
         {/* Product Grid */}
-        {products.length === 0 ? (
+        {loading ? (
+          <p className="text-center text-muted-foreground py-12">Loading products...</p>
+        ) : products.length === 0 ? (
           <p className="text-center text-muted-foreground">
             No products in this category yet.
           </p>

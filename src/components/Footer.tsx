@@ -14,7 +14,8 @@ import {
   Facebook,
   Twitter,
 } from "lucide-react";
-import { brand, contactInfo, socialLinks } from "@/data/siteContent";
+import { contactInfo, socialLinks } from "@/data/siteContent";
+import { shopConfig } from "@/config/shop.config";
 
 /**
  * Navigation link type definition
@@ -77,7 +78,7 @@ const Footer: React.FC = memo(() => {
               id="footer-heading"
               className="font-serif text-2xl font-bold mb-6"
             >
-              {brand.name}
+              {shopConfig.name}
             </h3>
             <p className="text-primary-foreground/80 leading-relaxed mb-6">
               {brand.tagline}
@@ -193,7 +194,7 @@ const Footer: React.FC = memo(() => {
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © {currentYear} {brand.name}. All rights reserved.
+              © {currentYear} {shopConfig.name}. All rights reserved.
             </p>
             <nav aria-label="Legal">
               <ul className="flex space-x-6 text-sm">

@@ -3,15 +3,29 @@
  * @description Single product page — image gallery, description, specs,
  * and an Enquire button that hands off to the Contact page.
  */
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { getProductById } from "@/data/products";
-import { CATEGORY_LABELS } from "@/types/product";
+import { dataService } from "@/services/dataService";
+import { CATEGORY_LABELS, type Product } from "@/types/product";
 
 const ProductDetail: React.FC = memo(() => {
   const { id } = useParams<{ id: string }>();
-  const product = id ? getProductById(id) : undefined;
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    if (id) {
+      dataService.getProductById(id).then((data) => {
+        setProduct(data);
+        setLoading(false);
+      });
+    }
+  }, [id]);
+
+  if (loading) {
+    return <main className="min-h-screen pt-28 pb-20">Loading...</main>;
+  }
 
   if (!product) {
     return <Navigate to="/collection" replace />;

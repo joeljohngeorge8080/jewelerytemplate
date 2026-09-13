@@ -1,3 +1,5 @@
+@import "./styles/theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,113 +12,6 @@
 
 /* ---------- BASE LAYER ---------- */
 @layer base {
-  :root {
-    /* ======= Color Palette ======= */
-    --background: 35 20% 97%;
-    --foreground: 25 15% 15%;
-    --card: 30 25% 98%;
-    --card-foreground: 25 15% 15%;
-    --popover: 30 25% 98%;
-    --popover-foreground: 25 15% 15%;
-
-    /* Primary & Secondary */
-    --primary: 25 30% 20%;
-    --primary-foreground: 30 25% 98%;
-    --secondary: 35 25% 92%;
-    --secondary-foreground: 25 30% 20%;
-
-    /* Muted & Accent */
-    --muted: 40 15% 94%;
-    --muted-foreground: 25 20% 45%;
-    --accent: 45 70% 75%;
-    --accent-foreground: 25 30% 20%;
-
-    /* Gold Variants */
-    --gold: 45 85% 65%;
-    --gold-light: 48 60% 85%;
-    --gold-dark: 40 75% 55%;
-
-    /* Special Surfaces */
-    --silk: 35 15% 96%;
-    --silk-dark: 30 20% 92%;
-
-    /* Functional Colors */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 40 20% 88%;
-    --input: 40 20% 90%;
-    --ring: 45 70% 75%;
-
-    /* Shape */
-    --radius: 0.75rem;
-
-    /* Gradients */
-    --gradient-gold: linear-gradient(
-      135deg,
-      hsl(45, 85%, 65%),
-      hsl(40, 75%, 55%)
-    );
-    --gradient-silk: linear-gradient(
-      180deg,
-      hsl(35, 20%, 97%),
-      hsl(30, 25%, 94%)
-    );
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(35, 20%, 97%) 0%,
-      hsl(30, 25%, 94%) 100%
-    );
-
-    /* Shadows */
-    --shadow-soft: 0 2px 20px -5px hsl(25 30% 20% / 0.1);
-    --shadow-elegant: 0 8px 40px -12px hsl(25 30% 20% / 0.15);
-    --shadow-gold: 0 4px 20px -8px hsl(45 70% 75% / 0.3);
-
-    /* Motion */
-    --transition-elegant: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: all 0.3s ease-out;
-
-    /* Sidebar Theme */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  /* Dark Mode */
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
 
   * {
     @apply border-border;

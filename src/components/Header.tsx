@@ -7,7 +7,7 @@
 import React, { useState, useEffect, memo } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { brand } from "@/data/siteContent";
+import { shopConfig } from "@/config/shop.config";
 
 /**
  * Navigation link type
@@ -56,7 +56,7 @@ const Header: React.FC = memo(() => {
             className="font-serif text-2xl font-bold text-primary"
             aria-label="Go to home page"
           >
-            {brand.name}
+            {shopConfig.name}
           </Link>
 
           {/* Desktop Navigation */}

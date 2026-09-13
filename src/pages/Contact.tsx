@@ -9,6 +9,7 @@ import React, { memo, useState, FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { contactInfo } from "@/data/siteContent";
+import { shopConfig } from "@/config/shop.config";
 
 interface FormState {
   name: string;
