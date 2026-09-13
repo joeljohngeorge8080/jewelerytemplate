@@ -22,7 +22,7 @@ export const shopConfig = {
   favicon: "💎",
 
   // Future: API endpoint for backend integration
-  apiBase: process.env.VITE_API_BASE || null,
+  apiBase: import.meta.env.VITE_API_BASE || null,
 
   // Feature toggles (disable features for certain shops)
   features: {

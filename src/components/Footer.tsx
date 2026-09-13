@@ -81,7 +81,7 @@ const Footer: React.FC = memo(() => {
               {shopConfig.name}
             </h3>
             <p className="text-primary-foreground/80 leading-relaxed mb-6">
-              {brand.tagline}
+              {shopConfig.tagline}
             </p>
             <nav aria-label="Social Media">
               <ul className="flex space-x-4">
