@@ -19,7 +19,7 @@ export const bracelets: Product[] = [
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "18K Gold",
     gemstone: "Emerald",
-    images: ["/products/bracelets/sample-1.webp"],
+    images: ["/products/bracelets/sample-1.svg"],
   },
   {
     id: "bracelet-gold-bangle",
@@ -30,6 +30,6 @@ export const bracelets: Product[] = [
     description:
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "22K Gold",
-    images: ["/products/bracelets/sample-2.webp"],
+    images: ["/products/bracelets/sample-2.svg"],
   },
 ];

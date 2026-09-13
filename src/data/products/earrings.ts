@@ -19,7 +19,7 @@ export const earrings: Product[] = [
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "18K Gold",
     gemstone: "Sapphire",
-    images: ["/products/earrings/sample-1.webp"],
+    images: ["/products/earrings/sample-1.svg"],
   },
   {
     id: "earring-diamond-stud",
@@ -31,6 +31,6 @@ export const earrings: Product[] = [
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "White Gold",
     gemstone: "Diamond",
-    images: ["/products/earrings/sample-2.webp"],
+    images: ["/products/earrings/sample-2.svg"],
   },
 ];

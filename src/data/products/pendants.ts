@@ -19,7 +19,7 @@ export const pendants: Product[] = [
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "18K Gold",
     gemstone: "Ruby",
-    images: ["/products/pendants/sample-1.webp"],
+    images: ["/products/pendants/sample-1.svg"],
   },
   {
     id: "pendant-emerald-drop",
@@ -31,6 +31,6 @@ export const pendants: Product[] = [
       "Replace this with your product description — materials, craftsmanship, and care details.",
     material: "White Gold",
     gemstone: "Emerald",
-    images: ["/products/pendants/sample-2.webp"],
+    images: ["/products/pendants/sample-2.svg"],
   },
 ];

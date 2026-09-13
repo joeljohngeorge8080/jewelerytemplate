@@ -19,7 +19,7 @@ export const rings: Product[] = [
       "Replace this with your product description — materials, craftsmanship, sizing, and care details.",
     material: "18K Gold",
     gemstone: "Diamond",
-    images: ["/products/rings/sample-1.webp"],
+    images: ["/products/rings/sample-1.svg"],
   },
   {
     id: "ring-eternity-band",
@@ -31,6 +31,6 @@ export const rings: Product[] = [
       "Replace this with your product description — materials, craftsmanship, sizing, and care details.",
     material: "Platinum",
     gemstone: "Diamond",
-    images: ["/products/rings/sample-2.webp"],
+    images: ["/products/rings/sample-2.svg"],
   },
 ];
